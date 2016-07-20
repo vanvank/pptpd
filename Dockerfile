@@ -1,7 +1,6 @@
 FROM centos:6.7
-RUN touch /var/lib/rpm/*
 RUN yum -y update
-RUN yum -y install ppp* pptp* iptables
+RUN touch /var/lib/rpm/* ; yum -y install ppp* pptp* iptables
 COPY pptpd-1.4.0-1.el6.x86_64.rpm /tmp/
 RUN cd /tmp ; yum -y localinstall pptpd-1.4.0-1.el6.x86_64.rpm
 
