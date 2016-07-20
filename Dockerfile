@@ -9,6 +9,11 @@ RUN chmod 0700 /entrypoint.sh
 RUN yum -y install rsyslog
 COPY pptpd.conf /etc/pptpd.conf
 COPY options.pptpd /etc/ppp/options.pptpd
+COPY chap-secrets /etc/ppp/chap-secrets
+
+RUN yum install python-setuptools -y
+RUN easy_install supervisor
+COPY supervisord.conf /etc/supervisord.conf
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["pptpd", "--fg"]
+CMD ["supervisord","-c","/etc/supervisord.conf"]
