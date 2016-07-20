@@ -1,11 +1,13 @@
-# A pptpd vpn docker image based on centos 6.7
-## How to use this image? you can run your container by:
+# A pptpd docker image based on centos 6.7
+
+## How to use this image? 
+### Run your container by:
 ```docker run -d -p 1723:1723 --privileged -v /lib/modules:/lib/modules:ro pptpd```
 
 After your container is running, you will need to modifiy the login password and dns
-### 1. First connect to your container by "docker exec -ti /bin/bash YourContainerName"
+### Connect to your container by "docker exec -ti /bin/bash YourContainerName"
 
-### 2. In the container, modify or add your login password like below
+### In the container, modify or add your login password like below
 
 ``` vi /etc/ppp/chap-secrets ```
 
@@ -15,7 +17,7 @@ After your container is running, you will need to modifiy the login password and
 "LoginUser" pptpd "Password" * 
 ```
 
-### 3. modify the dns you would like to use when connecting to vpn
+### Modify the dns you would like to use when connecting to vpn
 ```
 vi /etc/ppp/options.pptpd
 
